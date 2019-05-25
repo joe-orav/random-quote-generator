@@ -1,0 +1,24 @@
+{
+  "name": "random-quote-viewer",
+  "version": "1.0.0",
+  "description": "App that displays a random quote",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/joe-orav/random-quote-viewer.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/joe-orav/random-quote-viewer/issues"
+  },
+  "homepage": "https://github.com/joe-orav/random-quote-viewer#readme",
+  "dependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-react-app": "^3.1.2"
+  }
+}
