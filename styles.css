@@ -1,4 +1,9 @@
 body {
     margin: 0;
     background-color: #e0ffff;
+    height: 100vh;
+}
+
+#quote-box {
+    background-color: #ffe0e0;
 }
