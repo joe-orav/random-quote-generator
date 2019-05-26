@@ -33,11 +33,16 @@ var QuoteContainer = function (_React$Component) {
                 ),
                 React.createElement(
                     "div",
-                    { "class": "text-center" },
+                    { "class": "d-flex flex-row justify-content-between pl-4 pr-4" },
                     React.createElement(
                         "button",
                         { id: "new-quote", "class": "btn btn-primary mb-3" },
                         "New Quote"
+                    ),
+                    React.createElement(
+                        "a",
+                        { id: "tweet-quote", href: "https://twitter.com/intent/tweet?text=placeholder%20text", target: "_blank", "class": "btn btn-primary mb-3" },
+                        React.createElement("img", { src: "/img/twitter-logo.png" })
                     )
                 )
             );
