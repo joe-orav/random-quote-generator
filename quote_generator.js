@@ -18,11 +18,34 @@ var QuoteContainer = function (_React$Component) {
     _createClass(QuoteContainer, [{
         key: "render",
         value: function render() {
-            return React.createElement("div", null);
+            return React.createElement(
+                "div",
+                { id: "quote-box", "class": "h-75 w-50 m-auto rounded" },
+                React.createElement(
+                    "p",
+                    { id: "text" },
+                    "Together we can change the world, just one random act of kindness at a time."
+                ),
+                React.createElement(
+                    "p",
+                    { id: "author" },
+                    "Ron Hall"
+                ),
+                React.createElement(
+                    "button",
+                    { id: "new-quote" },
+                    "New Quote"
+                ),
+                React.createElement(
+                    "a",
+                    { id: "tweet-quote", href: "https://twitter.com/intent/tweet?text=placeholder%20text", target: "_blank" },
+                    "Tweet Quote"
+                )
+            );
         }
     }]);
 
     return QuoteContainer;
 }(React.Component);
 
-ReactDOM.render(React.createElement(QuoteContainer, null), document.getElementById("quote-box"));
+ReactDOM.render(React.createElement(QuoteContainer, null), document.getElementById("quote-box-container"));
