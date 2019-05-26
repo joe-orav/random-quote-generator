@@ -1,9 +1,26 @@
 body {
     margin: 0;
-    background-color: #e0ffff;
+    background-color: #0f2862;
     height: 100vh;
 }
 
 #quote-box {
-    background-color: #ffefef;
+    max-width: 645px;
+}
+
+#text {
+    font-size: 30px;
+}
+
+#author::before {
+    content: "- ";
+}
+
+#author {
+    font-size: 25px;
+}
+
+#new-quote {
+    background-color: #0f2862;
+    border-color: #0f2862;
 }
