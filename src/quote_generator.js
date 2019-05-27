@@ -1,6 +1,9 @@
+// Load quotes from array into local storage
 loadQuotesToLocalStorage();
 
+// Component that will display quote and author with ability to tweet the quote or generate a new one
 class QuoteContainer extends React.Component {
+    // Load constructor and inital state
     constructor(props) {
         super(props);
         this.state = {
@@ -10,6 +13,7 @@ class QuoteContainer extends React.Component {
         this.handleQuoteGeneration = this.handleQuoteGeneration.bind(this);
     }
     
+    //Function that will pull quotes from local storage and set the state to a random quote
     handleQuoteGeneration() {
         let quotesArr = JSON.parse(localStorage.getItem("quotes"));
 
@@ -21,10 +25,12 @@ class QuoteContainer extends React.Component {
         });
     }
 
+    //Load a random quote into state before component is rendered
     componentDidMount() {
         this.handleQuoteGeneration();
     }
 
+    //Render component
     render() {
         return (
             <div id="quote-box" className="h-75 w-auto m-auto rounded bg-light">
@@ -39,6 +45,7 @@ class QuoteContainer extends React.Component {
     }
 }
 
+//Function that loads quotes into local storage from an array
 function loadQuotesToLocalStorage() {
     const quotesArr = [
         { quote: "The greatest glory in living lies not in never falling, but in rising every time we fall.", author: "Nelson Mandela" },
@@ -50,9 +57,11 @@ function loadQuotesToLocalStorage() {
     localStorage.setItem("quotes", JSON.stringify(quotesArr));
 }
 
+//Function that takes a quote object and concats it to a Twitter URL so that user can easily tweet the quote
 function tweetQuoteURL(quoteInfo) {
     const twitterURL = "https://twitter.com/intent/tweet?text=";
     return twitterURL + '"' + quoteInfo.quote.replace(/\s/g, "%20") + '" - ' + quoteInfo.author;
 }
 
+// Render component into DOM
 ReactDOM.render(<QuoteContainer />, document.getElementById("quote-box-container"));
