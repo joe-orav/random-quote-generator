@@ -6,6 +6,8 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
+loadQuotesToLocalStorage();
+
 var QuoteContainer = function (_React$Component) {
     _inherits(QuoteContainer, _React$Component);
 
@@ -15,13 +17,31 @@ var QuoteContainer = function (_React$Component) {
         var _this = _possibleConstructorReturn(this, (QuoteContainer.__proto__ || Object.getPrototypeOf(QuoteContainer)).call(this, props));
 
         _this.state = {
-            quote: "Together we can change the world, just one random act of kindness at a time.",
-            author: "Ron Hall"
+            quote: "",
+            author: ""
         };
+        _this.handleQuoteGeneration = _this.handleQuoteGeneration.bind(_this);
         return _this;
     }
 
     _createClass(QuoteContainer, [{
+        key: "handleQuoteGeneration",
+        value: function handleQuoteGeneration() {
+            var quotesArr = JSON.parse(localStorage.getItem("quotes"));
+
+            var randomNum = Math.floor(Math.random() * quotesArr.length);
+
+            this.setState({
+                quote: quotesArr[randomNum].quote,
+                author: quotesArr[randomNum].author
+            });
+        }
+    }, {
+        key: "componentDidMount",
+        value: function componentDidMount() {
+            this.handleQuoteGeneration();
+        }
+    }, {
         key: "render",
         value: function render() {
             return React.createElement(
@@ -42,12 +62,12 @@ var QuoteContainer = function (_React$Component) {
                     { className: "d-flex flex-row justify-content-between pl-4 pr-4" },
                     React.createElement(
                         "button",
-                        { id: "new-quote", className: "btn btn-primary mb-3" },
+                        { id: "new-quote", className: "btn btn-primary mb-3", onClick: this.handleQuoteGeneration },
                         React.createElement("img", { src: "/img/refresh-icon.png", alt: "New Quote", title: "New Quote" })
                     ),
                     React.createElement(
                         "a",
-                        { id: "tweet-quote", href: convertToTwitterURL(this.state.quote), target: "_blank", className: "btn btn-primary mb-3" },
+                        { id: "tweet-quote", href: tweetQuoteURL(this.state), target: "_blank", className: "btn btn-primary mb-3" },
                         React.createElement("img", { src: "/img/twitter-logo.png", alt: "Tweet Quote", title: "Tweet Quote" })
                     )
                 )
@@ -58,9 +78,15 @@ var QuoteContainer = function (_React$Component) {
     return QuoteContainer;
 }(React.Component);
 
-function convertToTwitterURL(quote) {
+function loadQuotesToLocalStorage() {
+    var quotesArr = [{ quote: "The greatest glory in living lies not in never falling, but in rising every time we fall.", author: "Nelson Mandela" }, { quote: "The way to get started is to quit talking and begin doing.", author: "Walt Disney" }, { quote: "Your time is limited, so don't waste it living someone else's life. Don't be trapped by dogma – which is living with the results of other people's thinking.", author: "Steve Jobs" }, { quote: "If life were predictable it would cease to be life, and be without flavor.", author: "Eleanor Roosevelt" }];
+
+    localStorage.setItem("quotes", JSON.stringify(quotesArr));
+}
+
+function tweetQuoteURL(quoteInfo) {
     var twitterURL = "https://twitter.com/intent/tweet?text=";
-    return twitterURL + quote.replace(/\s/g, "%20");
+    return twitterURL + '"' + quoteInfo.quote.replace(/\s/g, "%20") + '" - ' + quoteInfo.author;
 }
 
 ReactDOM.render(React.createElement(QuoteContainer, null), document.getElementById("quote-box-container"));
