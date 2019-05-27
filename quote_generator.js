@@ -22,7 +22,8 @@ var QuoteContainer = function (_React$Component) {
 
         _this.state = {
             quote: "",
-            author: ""
+            author: "",
+            quoteIndex: 0
         };
         _this.handleQuoteGeneration = _this.handleQuoteGeneration.bind(_this);
         return _this;
@@ -35,12 +36,17 @@ var QuoteContainer = function (_React$Component) {
         key: "handleQuoteGeneration",
         value: function handleQuoteGeneration() {
             var quotesArr = JSON.parse(localStorage.getItem("quotes"));
+            var randomNum = void 0;
 
-            var randomNum = Math.floor(Math.random() * quotesArr.length);
+            //Prevents the same quote from being shown consecutively 
+            do {
+                randomNum = Math.floor(Math.random() * quotesArr.length);
+            } while (randomNum === this.state.quoteIndex);
 
             this.setState({
                 quote: quotesArr[randomNum].quote,
-                author: quotesArr[randomNum].author
+                author: quotesArr[randomNum].author,
+                quoteIndex: randomNum
             });
         }
 

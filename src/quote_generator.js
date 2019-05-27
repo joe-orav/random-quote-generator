@@ -8,7 +8,8 @@ class QuoteContainer extends React.Component {
         super(props);
         this.state = {
             quote: "",
-            author: ""
+            author: "",
+            quoteIndex: 0
         }
         this.handleQuoteGeneration = this.handleQuoteGeneration.bind(this);
     }
@@ -16,12 +17,17 @@ class QuoteContainer extends React.Component {
     //Function that will pull quotes from local storage and set the state to a random quote
     handleQuoteGeneration() {
         let quotesArr = JSON.parse(localStorage.getItem("quotes"));
+        let randomNum;
 
-        let randomNum = Math.floor(Math.random() * quotesArr.length);
+        //Prevents the same quote from being shown consecutively 
+        do {
+            randomNum = Math.floor(Math.random() * quotesArr.length);
+        } while(randomNum === this.state.quoteIndex);
 
         this.setState({
             quote: quotesArr[randomNum].quote,
-            author: quotesArr[randomNum].author
+            author: quotesArr[randomNum].author,
+            quoteIndex: randomNum
         });
     }
 
