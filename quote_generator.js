@@ -46,7 +46,7 @@ var QuoteContainer = function (_React$Component) {
         value: function render() {
             return React.createElement(
                 "div",
-                { id: "quote-box", className: "h-75 w-50 m-auto rounded bg-light" },
+                { id: "quote-box", className: "h-75 w-auto m-auto rounded bg-light" },
                 React.createElement(
                     "p",
                     { id: "text", className: "pl-4 pt-4 pr-4 pb-1 text-center" },

@@ -27,7 +27,7 @@ class QuoteContainer extends React.Component {
 
     render() {
         return (
-            <div id="quote-box" className="h-75 w-50 m-auto rounded bg-light">
+            <div id="quote-box" className="h-75 w-auto m-auto rounded bg-light">
                 <p id="text" className="pl-4 pt-4 pr-4 pb-1 text-center">{this.state.quote}</p>
                 <p id="author" className="text-right mr-5">{this.state.author}</p>
                 <div className="d-flex flex-row justify-content-between pl-4 pr-4">
