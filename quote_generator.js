@@ -6,8 +6,7 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-// Load quotes from array into local storage
-loadQuotesToLocalStorage();
+var quotesArr = [{ quote: "The greatest glory in living lies not in never falling, but in rising every time we fall.", author: "Nelson Mandela" }, { quote: "The way to get started is to quit talking and begin doing.", author: "Walt Disney" }, { quote: "Your time is limited, so don't waste it living someone else's life. Don't be trapped by dogma – which is living with the results of other people's thinking.", author: "Steve Jobs" }, { quote: "You will face many defeats in life, but never let yourself be defeated.", author: "Maya Angelou" }, { quote: "In the end, it's not the years in your life that count. It's the life in your years.", author: "Abraham Lincoln" }, { quote: "Never let the fear of striking out keep you from playing the game.", author: "Babe Ruth" }, { quote: "Life is a long lesson in humility.", author: "James M. Barrie" }, { quote: "In three words I can sum up everything I've learned about life: it goes on.", author: "Robert Frost" }, { quote: "Success is walking from failure to failure with no loss of enthusiasm.", author: "Winston Churchill" }, { quote: "You know you are on the road to success if you would do your job and not be paid for it.", author: "Oprah Winfrey" }];
 
 // Component that will display quote and author with ability to tweet the quote or generate a new one
 
@@ -35,7 +34,6 @@ var QuoteContainer = function (_React$Component) {
     _createClass(QuoteContainer, [{
         key: "handleQuoteGeneration",
         value: function handleQuoteGeneration() {
-            var quotesArr = JSON.parse(localStorage.getItem("quotes"));
             var randomNum = void 0;
 
             //Prevents the same quote from being shown consecutively 
@@ -97,16 +95,9 @@ var QuoteContainer = function (_React$Component) {
     return QuoteContainer;
 }(React.Component);
 
-//Function that loads quotes into local storage from an array
-
-
-function loadQuotesToLocalStorage() {
-    var quotesArr = [{ quote: "The greatest glory in living lies not in never falling, but in rising every time we fall.", author: "Nelson Mandela" }, { quote: "The way to get started is to quit talking and begin doing.", author: "Walt Disney" }, { quote: "Your time is limited, so don't waste it living someone else's life. Don't be trapped by dogma – which is living with the results of other people's thinking.", author: "Steve Jobs" }, { quote: "If life were predictable it would cease to be life, and be without flavor.", author: "Eleanor Roosevelt" }];
-
-    localStorage.setItem("quotes", JSON.stringify(quotesArr));
-}
-
 //Function that takes a quote object and concats it to a Twitter URL so that user can easily tweet the quote
+
+
 function tweetQuoteURL(quoteInfo) {
     var twitterURL = "https://twitter.com/intent/tweet?text=";
     return twitterURL + '"' + quoteInfo.quote.replace(/\s/g, "%20") + '" - ' + quoteInfo.author;
