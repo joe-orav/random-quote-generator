@@ -31,8 +31,8 @@ class QuoteContainer extends React.Component {
                 <p id="text" className="pl-4 pt-4 pr-4 pb-1 text-center">{this.state.quote}</p>
                 <p id="author" className="text-right mr-5">{this.state.author}</p>
                 <div className="d-flex flex-row justify-content-between pl-4 pr-4">
-                    <button id="new-quote" className="btn btn-primary mb-3" onClick={this.handleQuoteGeneration}><img src="/img/refresh-icon.png" alt="New Quote" title="New Quote" /></button>
-                    <a id="tweet-quote" href={tweetQuoteURL(this.state)} target="_blank" className="btn btn-primary mb-3"><img src="/img/twitter-logo.png" alt="Tweet Quote" title="Tweet Quote" /></a>
+                    <button id="new-quote" className="btn btn-primary mb-3" onClick={this.handleQuoteGeneration}><img src="img/refresh-icon.png" alt="New Quote" title="New Quote" /></button>
+                    <a id="tweet-quote" href={tweetQuoteURL(this.state)} target="_blank" className="btn btn-primary mb-3"><img src="img/twitter-logo.png" alt="Tweet Quote" title="Tweet Quote" /></a>
                 </div>
             </div>
         );

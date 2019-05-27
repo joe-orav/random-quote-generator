@@ -63,12 +63,12 @@ var QuoteContainer = function (_React$Component) {
                     React.createElement(
                         "button",
                         { id: "new-quote", className: "btn btn-primary mb-3", onClick: this.handleQuoteGeneration },
-                        React.createElement("img", { src: "/img/refresh-icon.png", alt: "New Quote", title: "New Quote" })
+                        React.createElement("img", { src: "img/refresh-icon.png", alt: "New Quote", title: "New Quote" })
                     ),
                     React.createElement(
                         "a",
                         { id: "tweet-quote", href: tweetQuoteURL(this.state), target: "_blank", className: "btn btn-primary mb-3" },
-                        React.createElement("img", { src: "/img/twitter-logo.png", alt: "Tweet Quote", title: "Tweet Quote" })
+                        React.createElement("img", { src: "img/twitter-logo.png", alt: "Tweet Quote", title: "Tweet Quote" })
                     )
                 )
             );
