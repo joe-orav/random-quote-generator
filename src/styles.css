@@ -6,21 +6,31 @@ body {
 
 #quote-box {
     max-width: 645px;
+    height: 325px;
 }
 
-#text {
-    font-size: 30px;
+#text, #author {
+    font-size: 1.2rem;
 }
 
 #author::before {
     content: "- ";
 }
 
-#author {
-    font-size: 25px;
-}
-
 #new-quote, #tweet-quote {
     background-color:#0f2862;
     border-color:#0f2862;
+}
+
+#app-title {
+    font-size: 3rem;
+}
+
+#quote-controls {
+    border-top: 0.5px solid #ebe6e3;
+    padding-top: 15px;
+}
+
+#quote-info {
+    overflow: scroll;
 }
